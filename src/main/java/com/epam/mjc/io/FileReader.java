@@ -12,14 +12,14 @@ public class FileReader {
         String str = null;
         try (BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file))) {
 
-            while ((str=bufferedReader.readLine()) != null){
-                if(str.startsWith("Name:")){
+            while ((str = bufferedReader.readLine()) != null) {
+                if (str.startsWith("Name: ")) {
                     profile.setName(str.substring(6));
-                }else if (str.startsWith("Age: ")){
+                } else if (str.startsWith("Age: ")) {
                     profile.setAge(Integer.valueOf(str.substring(5)));
-                }else if (str.startsWith("Email: ")){
+                } else if (str.startsWith("Email: ")) {
                     profile.setEmail(str.substring(7));
-                }else if (str.startsWith("Phone: ")){
+                } else if (str.startsWith("Phone: ")) {
                     profile.setPhone(Long.valueOf(str.substring(7)));
                 }
             }
