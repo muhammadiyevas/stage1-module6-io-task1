@@ -21,9 +21,9 @@ public class FileReader {
                     String value = parts[1];
 
                     switch (key) {
-                        case "Name"->name = value;
-                        case "Age" ->age = Integer.parseInt(value);
-                        case "Email"->email = value;
+                        case "Name" -> name = value;
+                        case "Age" -> age = Integer.parseInt(value);
+                        case "Email" -> email = value;
                         case "Phone" -> phone = Long.valueOf(value);
 
                     }
