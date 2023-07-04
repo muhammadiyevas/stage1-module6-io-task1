@@ -9,24 +9,27 @@ public class FileReader {
     public Profile getDataFromFile(File file) {
         Profile profile = new Profile();
 
-        String str = null;
-        try (BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
 
-            while ((str = bufferedReader.readLine()) != null) {
-                if (str.startsWith("Name: ")) {
-                    profile.setName(str.substring(6));
-                } else if (str.startsWith("Age: ")) {
-                    profile.setAge(Integer.valueOf(str.substring(5)));
-                } else if (str.startsWith("Email: ")) {
-                    profile.setEmail(str.substring(7));
-                } else if (str.startsWith("Phone: ")) {
-                    profile.setPhone(Long.parseLong(str.substring(7)));
+            String line = null;
+
+            while ((line = reader.readLine()) != null) {
+
+                if (line.startsWith("Name: ")) {
+                    profile.setName(line.substring(6));
+                } else if (line.startsWith("Age: ")) {
+                    profile.setAge(Integer.parseInt(line.substring(5)));
+                } else if (line.startsWith("Email: ")) {
+                    profile.setEmail(line.substring(7));
+                } else if (line.startsWith("Phone: ")) {
+                    profile.setPhone(Long.parseLong(line.substring(7)));
                 }
             }
+
         } catch (IOException e) {
             e.printStackTrace();
-
         }
+
         return profile;
 
     }
