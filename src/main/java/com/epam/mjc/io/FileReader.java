@@ -7,33 +7,28 @@ import java.io.IOException;
 
 public class FileReader {
     public Profile getDataFromFile(File file) {
-        String name = null;
-        String email = null;
-        int age = 0;
-        Long phone = 0L;
+        Profile profile = new Profile();
 
-        try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(": ");
-                if (parts.length == 2) {
-                    String key = parts[0];
-                    String value = parts[1];
+        String str = null;
+        try (BufferedReader bufferedReader = new BufferedReader(new java.io.FileReader(file))) {
 
-                    switch (key) {
-                        case "Name" -> name = value;
-                        case "Age" -> age = Integer.parseInt(value);
-                        case "Email" -> email = value;
-                        case "Phone" -> phone = Long.valueOf(value);
-
-                    }
+            while ((str=bufferedReader.readLine()) != null){
+                if(str.startsWith("Name:")){
+                    profile.setName(str.substring(6));
+                }else if (str.startsWith("Age: ")){
+                    profile.setAge(Integer.valueOf(str.substring(5)));
+                }else if (str.startsWith("Email: ")){
+                    profile.setEmail(str.substring(7));
+                }else if (str.startsWith("Phone: ")){
+                    profile.setPhone(Long.valueOf(str.substring(7)));
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
 
-        return new Profile(name, age, email, phone);
+        }
+        return profile;
+
     }
 }
 

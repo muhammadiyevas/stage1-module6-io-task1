@@ -3,7 +3,6 @@ package com.epam.mjc.io;
 import java.util.Objects;
 
 public class Profile {
-
     private String name;
     private Integer age;
     private String email;
@@ -18,8 +17,6 @@ public class Profile {
         this.email = email;
         this.phone = phone;
     }
-
-
 
     public String getName() {
         return name;
