@@ -20,7 +20,7 @@ public class FileReader {
                 } else if (str.startsWith("Email: ")) {
                     profile.setEmail(str.substring(7));
                 } else if (str.startsWith("Phone: ")) {
-                    profile.setPhone(Long.valueOf(str.substring(7)));
+                    profile.setPhone(Long.parseLong(str.substring(7)));
                 }
             }
         } catch (IOException e) {
