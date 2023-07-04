@@ -6,6 +6,7 @@ import java.io.IOException;
 
 
 public class FileReader {
+
     public Profile getDataFromFile(File file) {
         Profile profile = new Profile();
 
